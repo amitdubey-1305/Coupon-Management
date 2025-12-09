@@ -105,23 +105,33 @@ const SEED_COUPONS = [
     }
 ];
 
-// Function to initialize the store with seed data
+const REVIEWER_USER_CONTEXT = {
+    userId: 'hire-me-reviewer', // Use a dedicated user ID for the API
+    userTier: 'GOLD', // Set to a high tier to test complex coupons
+    country: 'IN',
+    lifetimeSpend: 15000,
+    ordersPlaced: 10,
+    email: 'hire-me@anshumat.org',
+    password: 'HireMe@2025!'
+};
+
 const initializeStore = () => {
     SEED_COUPONS.forEach(coupon => {
         couponStore.set(coupon.code, coupon);
     });
 
-    // Seed data for usageStore (e.g., user 'u456' has used 'WELCOME_FLAT_200' once)
     usageStore.set('u456', {
         'WELCOME_FLAT_200': 1,
     });
 };
 
-// Initialize the store on startup
+// Inital store setup
 initializeStore();
 
 
 export { 
+    
     couponStore,
-    usageStore
+    usageStore,
+    DEMO_REVIEWER_CONTEXT
 };
